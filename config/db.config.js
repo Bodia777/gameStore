@@ -1,5 +1,6 @@
 const mysql = require('mysql2/promise');
-const { createGamesTable, createCardsTable } = require('./tableDBGenerator');
+const { createGamesTable } = require('./tableDBGenerator');
+const logger = require('../logger');
 
 const dbConf = {
     host: 'localhost',
@@ -16,7 +17,7 @@ const createDB = async function (connection, database) {
     const query = `CREATE DATABASE IF NOT EXISTS ${database};`;
     try {
         await connection.execute(query);
-        console.log(`Created DB ${database}`)
+        logger.info(`Created DB ${database}`);
     } catch (e) {
         throw new Error(e, `couldn't create db.`);
     }
@@ -25,11 +26,12 @@ const createDB = async function (connection, database) {
 const updateConnection = async function() {
     state.pool = await mysql.createPool(dbConf);
     await state.pool.getConnection().then(conf => {
-        console.log('================Database===================');
-        console.log(' name : ' + conf.config.database);
-        console.log(' host : ' + conf.config.host);
-        console.log(' port : ' + conf.config.port);
-        console.log('===========================================');
+        logger.info(`
+================Database===================
+        name :  ${conf.config.database}
+        host :  ${conf.config.host}
+        port :  ${conf.config.port}
+===========================================`);
     });
 };
 
@@ -46,7 +48,6 @@ const connect = async function (numberofTrials = 2) {
         await createDB(state.pool, dbConf.database);
         await updateConnection();
         await createGamesTable.call({ connection: state.pool });
-        // await createCardsTable.call({ connection: state.pool });
     } catch (e) {
         await connect(numberofTrials - 1);
     }

@@ -1,11 +1,13 @@
 const db = require('../config/db.config');
+const logger = require('../logger');
 
 module.exports = {
     getGameDetails: async (req, res, next) => {
         try{
             const id = req.params.id;
             const connection = await db.get();
-            const [[ gameDetails ]] = await connection.execute(`SELECT * FROM games WHERE GameID = '${id}'`);
+            const [[ gameDetails ]] = await connection.execute(`SELECT * FROM games WHERE game_id = '${id}'`);
+            if (!gameDetails) res.status(403).json('not found');
             res.status(200).json(gameDetails);
         } catch (err) {
             sendError(err, res);
@@ -16,7 +18,7 @@ module.exports = {
             if (Object.entries(req.query).length) {
                 const connection = await db.get();
                 const filter = req.query.filter;
-                const [rows] = await connection.execute(`SELECT * FROM games WHERE Name LIKE BINARY '%${filter}%'`);
+                const [rows] = await connection.execute(`SELECT * FROM games WHERE name LIKE '%${filter}%'`);
                 res.status(200).json(rows);
             } else {
                 const connection = await db.get();
@@ -30,12 +32,18 @@ module.exports = {
 
     addGame: async (req, res, next) => {
         try {
+            const requiredField = [];
             const connection = await db.get();
-            const game = req.body;
-            const sql = `INSERT INTO games (Name, Description, Raiting) VALUE ('${game.name}', '${game.description}', '${game.raiting}')`;
+            let { name, description, raiting } = req.body;
+            if (!name)  requiredField.push('name');
+            if(!description) requiredField.push('description');
+            if(!raiting) requiredField.push('raiting');
+            if(requiredField.length) res.status(403).json({status: 'failed', message: `required field ${requiredField.join(', ')}`});
+
+            const sql = `INSERT INTO games (name, description, raiting) VALUE ('${name}', '${description}', '${raiting}')`;
             await connection.execute(sql);
             const result = await getGameID(game.name, res);
-            res.status(201).json(result);
+            res.status(201).json({status: 'success', id: result});
         } catch (err) {
             sendError(err, res);
         }
@@ -45,10 +53,14 @@ module.exports = {
         try{
             const connection = await db.get();
             const gameId = req.params.id;
-            const valueToChange = req.body;
-            const query = `UPDATE games SET Name = '${valueToChange.name}', Description = '${valueToChange.description}', Raiting = '${valueToChange.raiting}' WHERE GameID = ${gameId}`;
+            const { name, description, raiting } = req.body;
+
+            const query = `UPDATE games SET
+            name = '${name}', description = '${description}', raiting = '${raiting}'
+            WHERE game_id = ${gameId}`;
+
             await connection.execute(query);
-            res.status(200).json('game updated');
+            res.status(200).json({status: 'success', message: 'game updated'});
         } catch (err) {
             sendError(err, res);
         }
@@ -58,9 +70,9 @@ module.exports = {
         try{
             const connection = await db.get();
             const IDtoDelete = req.params;
-            const query = `DELETE FROM games WHERE GameID = ${IDtoDelete.id};`;
+            const query = `DELETE FROM games WHERE game_id = ${IDtoDelete.id};`;
             await connection.execute(query);
-            res.status(204).json('game deleted');
+            res.status(204).json({status: 'success', message: 'game deleted'});
         } catch(err) {
             sendError(err, res);
         }
@@ -70,7 +82,7 @@ module.exports = {
 async function getGameID (gameName, res) {
     try{
         const connection = await db.get();
-        const [[ gameId ]] = await connection.execute(`SELECT GameID FROM games WHERE Name = '${gameName}'`);
+        const [[ gameId ]] = await connection.execute(`SELECT game_id FROM games WHERE name = '${gameName}'`);
         return gameId;
     } catch(err) {
         sendError(err, res);
@@ -78,12 +90,12 @@ async function getGameID (gameName, res) {
 };
 
 function sendError(err, res) {
+    logger.error(err);
     if (err.errno = 1062) {
         res.status(403).json({
             message: `ERROR: ${err.sqlMessage}`
         });
     }
-    console.log(err, 'error<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<');
     res.status(403).json({
         message: `ERROR: ${err}`
     });

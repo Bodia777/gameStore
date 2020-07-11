@@ -1,0 +1,75 @@
+{"message":"\n    ================Server=================\n      host : localhost\n      port : 3000\n    =======================================\n    ","level":"info"}
+{"message":"================Database===================\n                name :  gamestore\n                host :  localhost\n                port :  3306\n     =============================================","level":"info"}
+{"message":"\n    ================Server=================\n      host : localhost\n      port : 3000\n    =======================================\n    ","level":"info"}
+{"message":"Created DB gamestore","level":"info"}
+{"message":"================Database===================\n                name :  gamestore\n                host :  localhost\n                port :  3306\n     =============================================","level":"info"}
+{"message":"\n    ================Server=================\n      host : localhost\n      port : 3000\n    =======================================\n    ","level":"info"}
+{"message":"Created DB gamestore","level":"info"}
+{"message":"================Database===================\n                name :  gamestore\n                host :  localhost\n                port :  3306\n     =============================================","level":"info"}
+{"message":"\n    ================Server=================\n      host : localhost\n      port : 3000\n    =======================================\n    ","level":"info"}
+{"message":"Created DB gamestore","level":"info"}
+{"message":"================Database===================\n                name :  gamestore\n                host :  localhost\n                port :  3306\n     =============================================","level":"info"}
+{"message":"\n    ================Server=================\n      host : localhost\n      port : 3000\n    =======================================\n    ","level":"info"}
+{"message":"Created DB gamestore","level":"info"}
+{"message":"================Database===================\n                name :  gamestore\n                host :  localhost\n                port :  3306\n     =============================================","level":"info"}
+{"message":"\n    ================Server=================\n      host : localhost\n      port : 3000\n    =======================================\n    ","level":"info"}
+{"message":"Created DB gamestore","level":"info"}
+{"message":"================Database===================\n                name :  gamestore\n                host :  localhost\n                port :  3306\n     =============================================","level":"info"}
+{"message":"\n    ================Server=================\n      host : localhost\n      port : 3000\n    =======================================\n    ","level":"info"}
+{"message":"Created DB gamestore","level":"info"}
+{"message":"================Database===================\n                name :  gamestore\n                host :  localhost\n                port :  3306\n     =============================================","level":"info"}
+{"message":"\n    ================Server=================\n      host : localhost\n      port : 3000\n    =======================================\n    ","level":"info"}
+{"message":"Created DB gamestore","level":"info"}
+{"message":"================Database===================\n                name :  gamestore\n                host :  localhost\n                port :  3306\n     =============================================","level":"info"}
+{"error":{"code":"MODULE_NOT_FOUND","path":"C:\\Users\\PC\\Documents\\tests\\gameStore\\back-end_Node\\package.json","requestPath":"../"},"level":"error","message":"uncaughtException: Cannot find module 'C:\\Users\\PC\\Documents\\tests\\gameStore\\back-end_Node\\index.js'. Please verify that the package.json has a valid \"main\" entry\nError: Cannot find module 'C:\\Users\\PC\\Documents\\tests\\gameStore\\back-end_Node\\index.js'. Please verify that the package.json has a valid \"main\" entry\n    at tryPackage (internal/modules/cjs/loader.js:322:19)\n    at Function.Module._findPath (internal/modules/cjs/loader.js:683:18)\n    at Function.Module._resolveFilename (internal/modules/cjs/loader.js:953:27)\n    at Function.Module._load (internal/modules/cjs/loader.js:842:27)\n    at Module.require (internal/modules/cjs/loader.js:1026:19)\n    at require (internal/modules/cjs/helpers.js:72:18)\n    at Object.<anonymous> (C:\\Users\\PC\\Documents\\tests\\gameStore\\back-end_Node\\controllers\\game-controller.js:2:16)\n    at Module._compile (internal/modules/cjs/loader.js:1138:30)\n    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1158:10)\n    at Module.load (internal/modules/cjs/loader.js:986:32)","stack":"Error: Cannot find module 'C:\\Users\\PC\\Documents\\tests\\gameStore\\back-end_Node\\index.js'. Please verify that the package.json has a valid \"main\" entry\n    at tryPackage (internal/modules/cjs/loader.js:322:19)\n    at Function.Module._findPath (internal/modules/cjs/loader.js:683:18)\n    at Function.Module._resolveFilename (internal/modules/cjs/loader.js:953:27)\n    at Function.Module._load (internal/modules/cjs/loader.js:842:27)\n    at Module.require (internal/modules/cjs/loader.js:1026:19)\n    at require (internal/modules/cjs/helpers.js:72:18)\n    at Object.<anonymous> (C:\\Users\\PC\\Documents\\tests\\gameStore\\back-end_Node\\controllers\\game-controller.js:2:16)\n    at Module._compile (internal/modules/cjs/loader.js:1138:30)\n    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1158:10)\n    at Module.load (internal/modules/cjs/loader.js:986:32)","exception":true,"date":"Sun Jul 12 2020 00:06:29 GMT+0300 (GMT+03:00)","process":{"pid":10804,"uid":null,"gid":null,"cwd":"C:\\Users\\PC\\Documents\\tests\\gameStore\\back-end_Node","execPath":"C:\\Program Files\\nodejs\\node.exe","version":"v12.17.0","argv":["C:\\Program Files\\nodejs\\node.exe","C:\\Users\\PC\\Documents\\tests\\gameStore\\back-end_Node\\bin\\www.js"],"memoryUsage":{"rss":42065920,"heapTotal":19865600,"heapUsed":12153416,"external":1489001,"arrayBuffers":80951}},"os":{"loadavg":[0,0,0],"uptime":41908},"trace":[{"column":19,"file":"internal/modules/cjs/loader.js","function":"tryPackage","line":322,"method":null,"native":false},{"column":18,"file":"internal/modules/cjs/loader.js","function":"Module._findPath","line":683,"method":"_findPath","native":false},{"column":27,"file":"internal/modules/cjs/loader.js","function":"Module._resolveFilename","line":953,"method":"_resolveFilename","native":false},{"column":27,"file":"internal/modules/cjs/loader.js","function":"Module._load","line":842,"method":"_load","native":false},{"column":19,"file":"internal/modules/cjs/loader.js","function":"Module.require","line":1026,"method":"require","native":false},{"column":18,"file":"internal/modules/cjs/helpers.js","function":"require","line":72,"method":null,"native":false},{"column":16,"file":"C:\\Users\\PC\\Documents\\tests\\gameStore\\back-end_Node\\controllers\\game-controller.js","function":null,"line":2,"method":null,"native":false},{"column":30,"file":"internal/modules/cjs/loader.js","function":"Module._compile","line":1138,"method":"_compile","native":false},{"column":10,"file":"internal/modules/cjs/loader.js","function":"Module._extensions..js","line":1158,"method":".js","native":false},{"column":32,"file":"internal/modules/cjs/loader.js","function":"Module.load","line":986,"method":"load","native":false}]}
+{"message":"\n    ================Server=================\n      host : localhost\n      port : 3000\n    =======================================\n    ","level":"info"}
+{"message":"\n    ================Server=================\n      host : localhost\n      port : 3000\n    =======================================\n    ","level":"info"}
+{"message":"Created DB gamestore","level":"info"}
+{"message":"================Database===================\n                name :  gamestore\n                host :  localhost\n                port :  3306\n     =============================================","level":"info"}
+{"message":"\n    ================Server=================\n      host : localhost\n      port : 3000\n    =======================================\n    ","level":"info"}
+{"message":"Created DB gamestore","level":"info"}
+{"message":"\n        ================Database===================\n                name :  gamestore\n                host :  localhost\n                port :  3306\n     =============================================","level":"info"}
+{"message":"\n    ================Server=================\n      host : localhost\n      port : 3000\n    =======================================\n    ","level":"info"}
+{"message":"Created DB gamestore","level":"info"}
+{"message":"\n     ================Database===================\n                name :  gamestore\n                host :  localhost\n                port :  3306\n     =============================================","level":"info"}
+{"message":"\n    ================Server=================\n      host : localhost\n      port : 3000\n    =======================================\n    ","level":"info"}
+{"message":"Created DB gamestore","level":"info"}
+{"message":"\n================Database===================\n                name :  gamestore\n                host :  localhost\n                port :  3306\n     =============================================","level":"info"}
+{"message":"\n    ================Server=================\n      host : localhost\n      port : 3000\n    =======================================\n    ","level":"info"}
+{"message":"Created DB gamestore","level":"info"}
+{"message":"\n================Database===================\n        name :  gamestore\n                host :  localhost\n                port :  3306\n     =============================================","level":"info"}
+{"message":"\n    ================Server=================\n      host : localhost\n      port : 3000\n    =======================================\n    ","level":"info"}
+{"message":"Created DB gamestore","level":"info"}
+{"message":"\n================Database===================\n        name :  gamestore\n        host :  localhost\n                port :  3306\n     =============================================","level":"info"}
+{"message":"\n    ================Server=================\n      host : localhost\n      port : 3000\n    =======================================\n    ","level":"info"}
+{"message":"Created DB gamestore","level":"info"}
+{"message":"\n    ================Server=================\n      host : localhost\n      port : 3000\n    =======================================\n    ","level":"info"}
+{"message":"Created DB gamestore","level":"info"}
+{"message":"\n================Database===================\n        name :  gamestore\n        host :  localhost\n        port :  3306\n=============================================","level":"info"}
+{"message":"\n    ================Server=================\n      host : localhost\n      port : 3000\n    =======================================\n    ","level":"info"}
+{"message":"Created DB gamestore","level":"info"}
+{"message":"\n================Database===================\n        name :  gamestore\n        host :  localhost\n        port :  3306\n============================================","level":"info"}
+{"message":"\n    ================Server=================\n      host : localhost\n      port : 3000\n    =======================================\n    ","level":"info"}
+{"message":"Created DB gamestore","level":"info"}
+{"message":"\n================Database===================\n        name :  gamestore\n        host :  localhost\n        port :  3306\n============================================","level":"info"}
+{"message":"Created DB gamestore","level":"info"}
+{"message":"\n================Database===================\n        name :  gamestore\n        host :  localhost\n        port :  3306\n============================================","level":"info"}
+{"message":"\n    ================Server=================\n      host : localhost\n      port : 3000\n    =======================================\n    ","level":"info"}
+{"message":"Created DB gamestore","level":"info"}
+{"message":"\n================Database===================\n        name :  gamestore\n        host :  localhost\n        port :  3306\n============================================","level":"info"}
+{"message":"\n================Server=================\n      host : localhost\n      port : 3000\n    =======================================\n    ","level":"info"}
+{"message":"\n================Server=================\n      host : localhost\n      port : 3000\n=======================================\n    ","level":"info"}
+{"message":"Created DB gamestore","level":"info"}
+{"message":"\n================Database===================\n        name :  gamestore\n        host :  localhost\n        port :  3306\n============================================","level":"info"}
+{"message":"\n================Server=================\n         host : localhost\n         port : 3000\n=======================================\n    ","level":"info"}
+{"message":"Created DB gamestore","level":"info"}
+{"message":"\n================Database===================\n        name :  gamestore\n        host :  localhost\n        port :  3306\n============================================","level":"info"}
+{"message":"\n================Server===================\n         host : localhost\n         port : 3000\n=========================================\n    ","level":"info"}
+{"message":"Created DB gamestore","level":"info"}
+{"message":"\n================Database===================\n        name :  gamestore\n        host :  localhost\n        port :  3306\n============================================","level":"info"}
+{"message":"\n================Server====================\n           host : localhost\n           port : 3000\n==========================================\n    ","level":"info"}
+{"message":"Created DB gamestore","level":"info"}
+{"message":"\n================Database===================\n        name :  gamestore\n        host :  localhost\n        port :  3306\n============================================","level":"info"}
+{"message":"\n=================Server====================\n           host : localhost\n           port : 3000\n===========================================\n    ","level":"info"}
+{"message":"Created DB gamestore","level":"info"}
+{"message":"\n================Database===================\n        name :  gamestore\n        host :  localhost\n        port :  3306\n============================================","level":"info"}
