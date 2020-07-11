@@ -1,29 +1,27 @@
-const db = require('../config/db.config');
 const logger = require('../logger');
+const { getGame, getGames, postGame, patchGame, delGame, getId } = require('../service/game-service');
 
 module.exports = {
     getGameDetails: async (req, res, next) => {
         try{
             const id = req.params.id;
-            const connection = await db.get();
-            const [[ gameDetails ]] = await connection.execute(`SELECT * FROM games WHERE game_id = '${id}'`);
+            const gameDetails = await getGame(id);
             if (!gameDetails) res.status(403).json('not found');
             res.status(200).json(gameDetails);
         } catch (err) {
             sendError(err, res);
         }
     },
+
     getGames: async (req, res, next) => {
         try {
-            if (Object.entries(req.query).length) {
-                const connection = await db.get();
+            if ((req.query).hasOwnProperty('filter')) {
                 const filter = req.query.filter;
-                const [rows] = await connection.execute(`SELECT * FROM games WHERE name LIKE '%${filter}%'`);
-                res.status(200).json(rows);
+                const games = await getGames(filter);
+                res.status(200).json(games);
             } else {
-                const connection = await db.get();
-                const [rows] = await connection.execute(`SELECT * FROM games`);
-                res.status(200).json(rows);
+                const games = await getGames();
+                res.status(200).json(games);
             }
         } catch (err) {
             sendError(err, res);
@@ -33,15 +31,12 @@ module.exports = {
     addGame: async (req, res, next) => {
         try {
             const requiredField = [];
-            const connection = await db.get();
             let { name, description, raiting } = req.body;
             if (!name)  requiredField.push('name');
             if(!description) requiredField.push('description');
             if(!raiting) requiredField.push('raiting');
             if(requiredField.length) res.status(403).json({status: 'failed', message: `required field ${requiredField.join(', ')}`});
-
-            const sql = `INSERT INTO games (name, description, raiting) VALUE ('${name}', '${description}', '${raiting}')`;
-            await connection.execute(sql);
+            await postGame(name, description, raiting);
             const result = await getGameID(game.name, res);
             res.status(201).json({status: 'success', id: result});
         } catch (err) {
@@ -51,15 +46,9 @@ module.exports = {
 
     updateGame: async (req, res, next) => {
         try{
-            const connection = await db.get();
             const gameId = req.params.id;
             const { name, description, raiting } = req.body;
-
-            const query = `UPDATE games SET
-            name = '${name}', description = '${description}', raiting = '${raiting}'
-            WHERE game_id = ${gameId}`;
-
-            await connection.execute(query);
+            await patchGame(name, description, raiting, gameId);
             res.status(200).json({status: 'success', message: 'game updated'});
         } catch (err) {
             sendError(err, res);
@@ -68,10 +57,8 @@ module.exports = {
 
     deleteGame: async (req, res, next) => {
         try{
-            const connection = await db.get();
-            const IDtoDelete = req.params;
-            const query = `DELETE FROM games WHERE game_id = ${IDtoDelete.id};`;
-            await connection.execute(query);
+            const iDtoDelete = req.params.id;
+            await delGame(iDtoDelete);
             res.status(204).json({status: 'success', message: 'game deleted'});
         } catch(err) {
             sendError(err, res);
@@ -81,8 +68,7 @@ module.exports = {
 
 async function getGameID (gameName, res) {
     try{
-        const connection = await db.get();
-        const [[ gameId ]] = await connection.execute(`SELECT game_id FROM games WHERE name = '${gameName}'`);
+        const gameId = await getId(gameName);
         return gameId;
     } catch(err) {
         sendError(err, res);
