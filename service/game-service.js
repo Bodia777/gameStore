@@ -21,11 +21,13 @@ module.exports = {
         const query = `INSERT INTO games (name, description, raiting) VALUE ('${name}', '${description}', '${raiting}')`;
         await connection.execute(query);
     },
-    patchGame: async (name, description, raiting, gameId) => {
+    patchGame: async (dataForUpdate, gameId) => {
+        const values = [];
+        for (let key in dataForUpdate) {
+            values.push(`${key} = '${ dataForUpdate[key] }'`)
+        }
         const connection = await db.get();
-        const query = `UPDATE games SET
-            name = '${name}', description = '${description}', raiting = '${raiting}'
-            WHERE game_id = ${gameId}`;
+        const query = `UPDATE games SET ${values.join(',')} WHERE game_id = ${gameId}`;
         await connection.execute(query);
     },
     delGame: async (id) => {
